@@ -13,9 +13,10 @@ Token is found at https://www.flowdock.com/account/tokens
 
  - flowdock\_token: "TOKEN"
  - flowdock\_chat: True
+ - flowdock\_from\_address: "change@example.com"
 
 If chat is set to True it sends a flowdock chat message.
-Can be used to make this role write to the inbox instead.
+If False, we send an inbox message.
 
 Dependencies
 ------------

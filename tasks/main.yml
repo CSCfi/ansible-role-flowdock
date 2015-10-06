@@ -6,3 +6,9 @@
     sudo: false
     always_run: yes
     when: flowdock_chat
+
+  - name: "send a inbox message to flowdock"
+    flowdock: type=chat from_address={{ flowdock_from_address }} source="ansible" from_name=ansible_{{ansible_user_id}} msg='ansible successful on {{ ansible_fqdn }} as {{ansible_env["SUDO_USER"]}}' tags="{{ansible_fqdn}}" token={{flowdock_token}}
+    sudo: false
+    always_run: yes
+    when: not flowdock_chat

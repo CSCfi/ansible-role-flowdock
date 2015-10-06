@@ -3,3 +3,4 @@
 #
 flowdock_token: "TOKEN"
 flowdock_chat: True
+flowdock_from_address: "change@example.com"
