@@ -1,0 +1,5 @@
+---
+# defaults file for ansible-role-flowdock
+#
+flowdock_token: "TOKEN"
+flowdock_chat: True
