@@ -2,13 +2,24 @@
 # tasks file for ansible-role-flowdock
 
   - name: "send a chat message to flowdock"
-    flowdock: type=chat external_user_name=ansible_{{ansible_user_id}} msg='ansible successful on {{ ansible_fqdn }} as {{ansible_env["SUDO_USER"]}}' tags='{{ansible_fqdn}}, ansible, ok' token={{flowdock_token}}
+    flowdock: type=chat 
+              external_user_name=ansible_{{ansible_user_id}} 
+              msg='ansible successful on {{ ansible_fqdn }} as {{ansible_env["SUDO_USER"]}}' 
+              tags='{{ansible_fqdn}}, ansible, ok' 
+              token={{flowdock_token}}
     sudo: false
     always_run: yes
     when: flowdock_chat
 
   - name: 'send a inbox message to flowdock'
-    flowdock: type=inbox from_address={{ flowdock_from_address }} subject="Ansible Run Completed Successfully!" source="ansible" from_name=ansible_{{ansible_user_id}} msg='ansible successful on {{ ansible_fqdn }} as {{ansible_env["SUDO_USER"]}}' tags='{{ansible_fqdn}}, ansible, ok' token={{flowdock_token}}
+    flowdock: type=inbox 
+              from_address={{ flowdock_from_address }} 
+              link="{{ flowdock_link }}"
+              subject="Ansible Run Completed Successfully!" 
+              source="ansible" from_name=ansible_{{ansible_user_id}} 
+              msg='ansible successful on {{ ansible_fqdn }} as {{ansible_env["SUDO_USER"]}}' 
+              tags='{{ansible_fqdn}}, ansible, ok' 
+              token={{flowdock_token}}
     sudo: false
     always_run: yes
     when: not flowdock_chat
