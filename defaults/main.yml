@@ -2,5 +2,5 @@
 # defaults file for ansible-role-flowdock
 #
 flowdock_token: "TOKEN"
-flowdock_chat: True
+flowdock_chat: False
 flowdock_from_address: "change@example.com"
