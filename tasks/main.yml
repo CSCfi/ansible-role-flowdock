@@ -9,7 +9,7 @@
               token={{flowdock_token}}
     sudo: false
     always_run: yes
-    when: flowdock_chat
+    when: flowdock_chat and flowdock_token != "TOKEN"
 
   - name: 'send a inbox message to flowdock'
     flowdock: type=inbox 
@@ -22,4 +22,4 @@
               token={{flowdock_token}}
     sudo: false
     always_run: yes
-    when: not flowdock_chat
+    when: not flowdock_chat and flowdock_token != "TOKEN"
