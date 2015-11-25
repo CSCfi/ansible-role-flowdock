@@ -37,4 +37,4 @@
               token={{flowdock_token}}
     sudo: false
     always_run: yes
-    when: not flowdock_chat and flowdock_inbox_sent.failed
+    when: not flowdock_chat and flowdock_inbox_sent|failed
