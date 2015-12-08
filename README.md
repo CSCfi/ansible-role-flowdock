@@ -2,7 +2,7 @@
 ansible-role-flowdock
 =========
 
-Sends a flowdock notification 
+Sends a flowdock notification. Nice to put at the end of an ansible-playbook to be informed when a play has completed.
 
 Requirements
 ------------
