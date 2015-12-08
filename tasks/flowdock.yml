@@ -10,6 +10,7 @@
     sudo: false
     always_run: yes
     when: flowdock_chat
+    changed_when: false
 
   - name: 'send a inbox message to flowdock'
     flowdock: type=inbox 
@@ -25,6 +26,7 @@
     when: not flowdock_chat
     ignore_errors: True
     register: flowdock_inbox_sent
+    changed_when: false
 
   - name: 'send a inbox message to flowdock without sudo_user'
     flowdock: type=inbox 
@@ -38,3 +40,4 @@
     sudo: false
     always_run: yes
     when: not flowdock_chat and flowdock_inbox_sent|failed
+    changed_when: false
