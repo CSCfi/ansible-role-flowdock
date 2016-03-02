@@ -6,6 +6,8 @@
     register: reg_flowdock_githead
     always_run: True
     failed_when: False
+    delegate_to: localhost
+    when: flowdock_git_master
 
   - name: "send a chat message to flowdock"
     flowdock: type=chat 

@@ -5,3 +5,5 @@ flowdock_token: "TOKEN"
 flowdock_chat: False
 flowdock_from_address: "change@example.com"
 flowdock_link: "http://example.com"
+# Set this to False to not include the git master from localhost
+flowdock_git_master: True
