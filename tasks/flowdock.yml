@@ -6,6 +6,7 @@
     register: reg_flowdock_githead
     always_run: True
     failed_when: False
+    changed_when: False
     delegate_to: localhost
     become: False
     when: flowdock_git_master
