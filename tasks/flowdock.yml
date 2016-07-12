@@ -1,8 +1,8 @@
 ---
 # tasks file for ansible-role-flowdock
 #
-  - name: store git head
-    command: git rev-parse --abbrev-ref HEAD
+  - name: store git head and grep away git and command not found errors
+    command: "git rev-parse --abbrev-ref HEAD 2>&1|grep -v -e fatal -e command"
     register: reg_flowdock_githead
     always_run: True
     failed_when: False
