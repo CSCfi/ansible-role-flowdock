@@ -29,7 +29,7 @@
               subject="Ansible Run Completed Successfully on {{ ansible_fqdn }}!" 
               source="ansible" from_name=ansible_{{ ansible_user_id }} 
               msg='ansible successful on {{ ansible_fqdn }} as {{ ansible_env["SUDO_USER"] | default(ansible_user_id) }}. IPv4={{ ansible_default_ipv4["address"] }}/{{ ansible_default_ipv4["netmask"] }}, IPv6={{ ansible_default_ipv6["address"] | default("No IPv6") }}/{{ ansible_default_ipv6["prefix"] | default("") }}, biosdate={{ ansible_bios_date | default("N/A") }}, biosversion={{ ansible_bios_version | default("N/A") }}, dist={{ ansible_distribution }}, distversion={{ ansible_distribution_version }}, kernel={{ ansible_kernel }}, memory={{ ansible_memtotal_mb}}, processor={{ansible_processor[1] | default("N/A")}}, git_head={{ reg_flowdock_githead['stdout'] | default("N/A") }}, vendor={{ ansible_system_vendor | default("N/A") }}'
-              tags='{{ ansible_fqdn }},ansible,ok,{{ ansible_domain }},{{ siteName | default("siteName_undefined") }},git_head={{ reg_flowdock_githead['stdout'] | default("N/A") }}, vendor={{ ansible_system_vendor | default("N/A") }},dist={{ ansible_distribution }},ansible_version={{ ansible_version | default("N/A")}}' 
+              tags='{{ ansible_fqdn }},ansible,ok,{{ ansible_domain }},{{ siteName | default("siteName_undefined") }},git_head={{ reg_flowdock_githead['stdout'] | default("N/A") }}, vendor={{ ansible_system_vendor | default("N/A") }},dist={{ ansible_distribution }},ansible_version={{ ansible_version['full'] | default("N/A")}}' 
               token={{ flowdock_token }}
     become: false
     always_run: yes
