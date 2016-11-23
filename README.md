@@ -12,6 +12,8 @@ If the role is put as the last, then if anything fails in the playbook - the flo
 Requirements
 ------------
 
+ansible >=2.2
+
 Role Variables
 --------------
 

@@ -4,7 +4,7 @@
   - name: store git head and grep away git and command not found errors
     shell: "git rev-parse --abbrev-ref HEAD 2>&1|grep -v -e fatal -e command"
     register: reg_flowdock_githead
-    always_run: True
+    check_mode: True
     failed_when: False
     changed_when: False
     delegate_to: localhost
@@ -17,10 +17,10 @@
               msg='ansible successful on {{ ansible_fqdn }} as {{ansible_env["SUDO_USER"]}}' 
               tags='{{ansible_fqdn}}, ansible, ok' 
               token={{flowdock_token}}
-    become: false
-    always_run: yes
+    become: False
+    check_mode: True
     when: flowdock_chat
-    changed_when: false
+    changed_when: False
 
   - name: 'send a inbox message to flowdock'
     flowdock: type=inbox 
@@ -31,7 +31,7 @@
               msg='ansible successful on {{ ansible_fqdn }} as {{ ansible_env["SUDO_USER"] | default(ansible_user_id) }}. IPv4={{ ansible_default_ipv4["address"] }}/{{ ansible_default_ipv4["netmask"] }}, IPv6={{ ansible_default_ipv6["address"] | default("No IPv6") }}/{{ ansible_default_ipv6["prefix"] | default("") }}, biosdate={{ ansible_bios_date | default("N/A") }}, biosversion={{ ansible_bios_version | default("N/A") }}, dist={{ ansible_distribution }}, distversion={{ ansible_distribution_version }}, kernel={{ ansible_kernel }}, memory={{ ansible_memtotal_mb}}, processor={{ansible_processor[1] | default("N/A")}}, git_head={{ reg_flowdock_githead['stdout'] | default("N/A") }}, vendor={{ ansible_system_vendor | default("N/A") }}'
               tags='{{ ansible_fqdn }},ansible,ok,{{ ansible_domain }},{{ siteName | default("siteName_undefined") }},git_head={{ reg_flowdock_githead['stdout'] | default("N/A") }}, vendor={{ ansible_system_vendor | default("N/A") }},dist={{ ansible_distribution }},ansible_version={{ ansible_version['full'] | default("N/A")}}' 
               token={{ flowdock_token }}
-    become: false
-    always_run: yes
+    become: False
+    check_mode: True
     when: not flowdock_chat
-    changed_when: false
+    changed_when: False
