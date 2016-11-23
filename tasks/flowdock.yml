@@ -4,7 +4,7 @@
   - name: store git head and grep away git and command not found errors
     shell: "git rev-parse --abbrev-ref HEAD 2>&1|grep -v -e fatal -e command"
     register: reg_flowdock_githead
-    check_mode: True
+    check_mode: no
     failed_when: False
     changed_when: False
     delegate_to: localhost
@@ -18,7 +18,7 @@
               tags='{{ansible_fqdn}}, ansible, ok' 
               token={{flowdock_token}}
     become: False
-    check_mode: True
+    check_mode: no
     when: flowdock_chat
     changed_when: False
 
@@ -32,6 +32,6 @@
               tags='{{ ansible_fqdn }},ansible,ok,{{ ansible_domain }},{{ siteName | default("siteName_undefined") }},git_head={{ reg_flowdock_githead['stdout'] | default("N/A") }}, vendor={{ ansible_system_vendor | default("N/A") }},dist={{ ansible_distribution }},ansible_version={{ ansible_version['full'] | default("N/A")}}' 
               token={{ flowdock_token }}
     become: False
-    check_mode: True
+    check_mode: no
     when: not flowdock_chat
     changed_when: False
