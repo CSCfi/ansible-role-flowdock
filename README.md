@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/CSC-IT-Center-for-Science/ansible-role-flowdock.svg?branch=master)](https://travis-ci.org/CSC-IT-Center-for-Science/ansible-role-flowdock)
+[![Build Status](https://travis-ci.org/CSCfi/ansible-role-flowdock.svg?branch=master)](https://travis-ci.org/CSCfi/ansible-role-flowdock)
 ansible-role-flowdock
 =========
 
