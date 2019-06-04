@@ -9,7 +9,7 @@
     changed_when: False
     delegate_to: localhost
     become: False
-    when: flowdock_git_master
+    when: flowdock_git_master|bool
 
   - name: "send a chat message to flowdock"
     flowdock: type=chat 
@@ -19,7 +19,7 @@
               token={{flowdock_token}}
     become: False
     check_mode: no
-    when: flowdock_chat
+    when: flowdock_chat|bool
     changed_when: False
 
   - name: 'send a inbox message to flowdock'
@@ -33,5 +33,5 @@
               token={{ flowdock_token }}
     become: False
     check_mode: no
-    when: not flowdock_chat
+    when: not flowdock_chat|bool
     changed_when: False
